@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bluesilk: a minimal personal AI agent</title>
+<meta name="description" content="bluesilk is a minimal personal AI agent: any tool-calling model on OpenRouter, reached through Telegram or a web console.">
+<meta property="og:title" content="bluesilk">
+<meta property="og:description" content="A minimal personal AI agent. OpenRouter + Telegram or a web console.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23040814'/%3E%3Cpath d='M2 10c3-6 5 4 8-2s3 2 4 0' stroke='%2355ccff' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js"}}</script>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#">bluesilk</a>
+  <nav>
+    <a href="https://github.com/wunsiang-cheng/bluesilk">GitHub</a>
+    <a href="https://pypi.org/project/bluesilk/">PyPI</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <canvas id="silk" aria-hidden="true"></canvas>
+  <div class="copy">
+    <h1>A minimal personal AI agent.</h1>
+    <p>Any tool-calling model on OpenRouter, reached through your private Telegram chat, a built-in web console, or both. One conversation, whichever channel you pick up.</p>
+    <div class="install">
+      <code><span class="prompt">$ </span>uv tool install bluesilk</code>
+      <button type="button" data-copy="uv tool install bluesilk" aria-label="Copy install command">copy</button>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="https://github.com/wunsiang-cheng/bluesilk">GitHub</a>
+      <a class="btn" href="https://pypi.org/project/bluesilk/">PyPI</a>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <h2>What it does</h2>
+  <ul>
+    <li><h3>One conversation</h3><p>Telegram and the web console share a single thread. The reply goes to the channel you wrote on.</p></li>
+    <li><h3>Memory and skills</h3><p>Persistent memory, reusable skills, custom tools and conversation history, all as plain files under <code>~/.bluesilk/</code>.</p></li>
+    <li><h3>Shell and jobs</h3><p>Shell access, file transfer, image understanding and background jobs that keep running while you talk.</p></li>
+    <li><h3>Sub-agents</h3><p>Up to five helpers, each on its own thread with the same tools. They report to the agent, not to you.</p></li>
+    <li><h3>Browser and desktop</h3><p>Drives a headless Chromium from screenshots. On X11, it can act on the real screen too.</p></li>
+    <li><h3>MCP servers</h3><p>Local stdio or remote Streamable HTTP servers, configured in one JSON file. Tools appear as <code>server__tool</code>.</p></li>
+  </ul>
+</section>
+
+<footer>
+  <span>MIT License</span>
+  <a href="https://github.com/wunsiang-cheng/bluesilk">GitHub</a>
+  <a href="https://pypi.org/project/bluesilk/">PyPI</a>
+</footer>
+
+<script>
+for (const b of document.querySelectorAll('[data-copy]')) b.onclick = async () => {
+  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1500); } catch {}
+};
+</script>
+<script type="module" src="hero.js"></script>
+</body>
+</html>
